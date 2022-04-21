@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,13 +7,13 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     private int score = 0;
     public int health = 5;
-
+  
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Pickup")
         {
             this.score++;
-            Debug.Log("Score: " + score);
+            Debug.Log("Score: "+ score);
             Destroy(other.gameObject);
 
 
@@ -28,7 +27,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You win!");
 
-
+        
         }
     }
 
@@ -36,8 +35,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float forwordForce = this.speed;
-        float backwordForce = this.speed * -1;
+         float forwordForce = this.speed;
+         float backwordForce = this.speed * -1;
         if (Input.GetKey("d") || Input.GetKey("right"))
         {
             rb.AddForce(forwordForce * Time.deltaTime, 0, 0);
@@ -46,7 +45,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(0, 0, forwordForce * Time.deltaTime);
         }
-        if (Input.GetKey("s") || Input.GetKey("down"))
+        if (Input.GetKey("s")|| Input.GetKey("down"))
         {
             rb.AddForce(0, 0, backwordForce * Time.deltaTime);
         }
@@ -64,5 +63,5 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-
+  
 }
