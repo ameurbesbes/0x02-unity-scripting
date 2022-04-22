@@ -1,5 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;sing UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -7,7 +9,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     private int score = 0;
     public int health = 5;
-  
+
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Pickup")
@@ -15,14 +18,14 @@ public class PlayerController : MonoBehaviour
             this.score++;
             Debug.Log("Score: "+ score);
             Destroy(other.gameObject);
-
-
         }
+
         if (other.tag == "Trap")
         {
             health--;
             Debug.Log("Health: " + health);
         }
+
         if (other.tag == "Goal")
         {
             Debug.Log("You win!");
@@ -41,14 +44,17 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(forwordForce * Time.deltaTime, 0, 0);
         }
+
         if (Input.GetKey("w") || Input.GetKey("up"))
         {
             rb.AddForce(0, 0, forwordForce * Time.deltaTime);
         }
+
         if (Input.GetKey("s")|| Input.GetKey("down"))
         {
             rb.AddForce(0, 0, backwordForce * Time.deltaTime);
         }
+
         if (Input.GetKey("a") || Input.GetKey("left"))
         {
             rb.AddForce(backwordForce * Time.deltaTime, 0, 0);
